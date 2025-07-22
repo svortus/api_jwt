@@ -1,6 +1,6 @@
 import createClient from "../models/usersModels.js"
-
 import crypt from 'bcrypt'
+const saltRounds = 10;
 
 export const insertClient = (req, res) =>{
     const [id]= req.body;
@@ -18,5 +18,13 @@ export const insertClient = (req, res) =>{
                 }
             )
         })
-        .catch()
+        .catch((error)=>{
+            res.status(400).json(
+                {
+                    status: "error",
+                    data: error,
+                    message: "Fail to create client"
+                }
+            )
+        })
 }
