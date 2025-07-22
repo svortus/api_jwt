@@ -3,14 +3,14 @@ const database = PgPromise()
 const pgp = database({
     host: 'localhost',
     port: 5432,
-    database: 'restaurante_db',
+    database: 'dev_db',
     user: 'postgres',
     password: '1234'
 })
 
 pgp.one("SELECT $1 AS VALUE",1234)
     .then(data, () => {
-            console.log("conncetion sucess:", data.value);
+        console.log("conncetion sucess:", data.value);
     })
     .catch(error, () =>{
         console.error("connection fail:",error);
